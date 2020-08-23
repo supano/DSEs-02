@@ -50,7 +50,7 @@
         button.addEventListener("click", async () => {
             button.classList.add("is-loading")
             const url = document.getElementById("url").value
-            await fetch(`http://localhost:5000/api?url=${url}`)
+            await fetch(`https://ex-simple-dses.herokuapp.com/api?url=${url}`)
                 .then(res => res.json())
                 .then(json => {
                     button.classList.remove("is-loading")
