@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSEs - G6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css" integrity="sha512-ADrqa2PY1TZtb/MoLZIZu/Z/LlPaWQeDMBV73EMwjGam43/JJ5fqW38Rq8LJOVGCDfrJeOMS3Q/wRUVzW5DkjQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.7.3/tailwind.min.css" integrity="sha512-jJ4q433srLv86rVtrIu5Tco3NLLZ81Y4kkgr7jqm19oZG7cutkYOSSVLqQJ0I4niSm/5X5B4BeEbnBRvFfhWLg==" crossorigin="anonymous" />
+</head>
+<style>
+    .h-half {
+        height: 50%;
+    }
+    .title {
+        font-size: 32px;
+    }
+</style>
+<body>
+    <div class="container flex justify-center items-center h-screen">
+        <div class="border w-3/4 h-half p-5">
+            <h1 class="text-center title">แยกรูปหมา - แมว</h1>
+
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="card">
+                        <textarea class="textarea" placeholder="Image url" id="url"></textarea>
+                    </div>
+                </div>
+                <div class="column is-half ">
+                    <pre class="notification" id="result">
+
+                    </pre>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-full flex justify-center">
+                    <button class="button is-success" id="go">Go</button>
+                </div>
+            </div>
+
+        </div>
+
+       
+    </div>
+
+    <script>
+        const resultEle = document.getElementById("result")
+        const button = document.getElementById("go")
+        
+        button.addEventListener("click", async () => {
+            button.classList.add("is-loading")
+            const url = document.getElementById("url").value
+            await fetch(`https://ex-simple-dses.herokuapp.com/api?url=${url}`)
+                .then(res => res.json())
+                .then(json => {
+                    button.classList.remove("is-loading")
+                    resultEle.textContent  = JSON.stringify(json, undefined, 2)
+                })
+                .catch(err => {
+                    button.classList.remove("is-loading")
+                    alert(err)
+                })
+        })
+    </script>
+</body>
+</html>

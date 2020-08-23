@@ -3,12 +3,14 @@ import pickle
 import numpy as np
 from flask import request as fl_requests, jsonify
 from botnoi import cv
+from flask_cors import CORS, cross_origin
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_url_path='/static')
+cors = CORS(app)
 
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1>DES G6</p>"
+    return app.send_static_file('index.html')
 
 
 modFile = './models/mymodel.p'
@@ -26,6 +28,7 @@ def predictimg(imgurl):
   return result
 
 @app.route('/api', methods=['GET'])
+@cross_origin()
 def api():
     if 'url' in fl_requests.args:
         url = fl_requests.args['url']
