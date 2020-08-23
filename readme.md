@@ -6,6 +6,10 @@ pip install Pillow
 pip install -U scikit-learn scipy matplotlib  
 pip install keras  
 
+## APP
+
+https://dashboard.heroku.com/
+
 ## API
 
 ```
