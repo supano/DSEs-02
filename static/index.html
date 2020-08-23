@@ -19,7 +19,7 @@
     <div class="container flex justify-center items-center h-screen">
         <div class="border w-3/4 h-half p-5">
             <h1 class="text-center title">แยกรูปหมา - แมว</h1>
-
+            <p class="text-gray-600 text-center mb-2">ห้ามใส่ Url ที่มีภาษาอื่นนอกจากภาษาอังกฤษ</p>
             <div class="columns">
                 <div class="column is-half">
                     <div class="card">
@@ -50,7 +50,7 @@
         button.addEventListener("click", async () => {
             button.classList.add("is-loading")
             const url = document.getElementById("url").value
-            await fetch(`https://ex-simple-dses.herokuapp.com/api?url=${url}`)
+            await fetch(`http://localhost:5000/api?url=${url}`)
                 .then(res => res.json())
                 .then(json => {
                     button.classList.remove("is-loading")
@@ -58,7 +58,8 @@
                 })
                 .catch(err => {
                     button.classList.remove("is-loading")
-                    alert(err)
+                    console.error(err)
+                    alert("เกิดข้อผิดพลาด")
                 })
         })
     </script>
