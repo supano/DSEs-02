@@ -34,4 +34,4 @@ def api():
 
     return predictimg(url)
 
-app.run("localhost","80")
+app.run()
