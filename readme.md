@@ -9,7 +9,7 @@ pip install -U flask-cors
 
 ## APP
 
-https://dashboard.heroku.com/
+https://ex-simple-dses.herokuapp.com/
 
 ## API
 
