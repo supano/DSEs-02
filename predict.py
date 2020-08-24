@@ -1,3 +1,6 @@
+#!/usr/bin/python
+#-*-coding: utf-8 -*-
+######
 from botnoi import cv
 import pickle
 import numpy as np

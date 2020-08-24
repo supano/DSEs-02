@@ -1,3 +1,6 @@
+#!/usr/bin/python
+#-*-coding: utf-8 -*-
+######
 import flask
 from flask import request as fl_requests, jsonify
 from flask_cors import CORS, cross_origin
